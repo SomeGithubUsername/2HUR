@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/PlayerPachuli.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Dummy.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node"]
+
+[node name="PlayerPachuli" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 341.32, 247.44 )
+
+[node name="Dummy" parent="." index="1" instance=ExtResource( 2 )]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+
