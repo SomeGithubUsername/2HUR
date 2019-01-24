@@ -12,6 +12,13 @@ radius = 13.4527
 [node name="Dummy" instance=ExtResource( 1 )]
 
 position = Vector2( 93.9416, 33.2958 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
