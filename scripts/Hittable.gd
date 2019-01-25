@@ -1,8 +1,9 @@
 extends Area2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var invencibility = false
+
+func give_invencibility(seconds):
+	pass
 
 func _ready():
 	# Called when the node is added to the scene for the first time.

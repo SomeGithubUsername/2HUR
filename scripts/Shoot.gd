@@ -6,6 +6,7 @@ var afected_group = null
 var life_time = 0
 var damage = 1
 
+# El parametro es el nombre del grupo al que el disparo dañara
 func set_affected_group(group_name):
 	afected_group = group_name
 

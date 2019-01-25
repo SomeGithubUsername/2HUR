@@ -30,7 +30,7 @@ func shoot():
 	var new_bullet = Bullet.instance()
 	new_bullet.set_affected_group("enemies")
 	new_bullet.start(position, -GlobalScript.HALF_PI)
-	new_bullet.set_lifetime(2)
+	new_bullet.set_lifetime(0)
 	ShootContainer.add_child(new_bullet)
 
 # Called every frame. Delta is time since last frame.
