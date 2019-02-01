@@ -1,20 +1,26 @@
 extends "res://scripts/Shoot.gd"
 
-var theta = 0.0
+var t = 0.0
 var radius = 0
 var velocity = Vector2(0.0, 0.0)
-var aceleration = Vector2(0.0, 0.0)
 var velocity_func = null
-var aceleration_func = null
+var schedule = []
+var current_schedule_index = 0 
+
+onready var ShootPaterns = preload("res://scripts/ShootPatterns.gd")
 
 func _ready():
-	velocity_func = funcref(self, "sin_pattern")
+	# velocity_func = funcref(self, "sin_pattern")
 	# Referencia a la funcion self.spiral_pattern()
+	pass
 
-func start(pos, angle):
+func set_scale(s):
+	if s <= 0:
+		return
+	self.scale *= s
+
+func set_initial_position(pos):
 	self.position = pos
-	self.velocity.x = 100*cos(angle) 
-	self.velocity.y = 100*sin(angle)
 
 func set_lifetime(seconds):
 	if seconds == 0:
@@ -23,29 +29,43 @@ func set_lifetime(seconds):
 	$LifeTimer.wait_time = seconds
 	$LifeTimer.start()
 
+# Schedule es una tabla que contiene un tiempo, el nombre de un patron de movimiento y los parametros del patron
+# si el tiempo actual es mayor o igual cambiara al siguente patron de movimiento
+func add_to_schedule(time, pattern, args):
+	schedule.append({"time":time, "pattern":pattern, "args":args})
+
 func _process(delta):
-	self.position += velocity * delta
-	if velocity_func != null:
-		velocity_func.call_func(theta)
-#	if theta >= 2*TAU:
-#		theta -= 2*TAU
-#	else:
-	theta += 0.2
-
-func spiral_pattern(t):
-	var w = 2.0
-	var speed = 50
-	var radius = 10
-	self.velocity.x = t - radius*w*cos(w*t)
-	self.velocity.y = t + radius*w*sin(w*t)
-	self.velocity *= speed
-
-func sin_pattern(t):
-	var k = 8.4
-	var w = 1.5
-	var r = 50
-	self.velocity.y = pow(sin(w*t), 3.0)
-	self.velocity.x = cos(w*t) - pow(cos(w*t),4.0)
+	var current_schedule = schedule[current_schedule_index]
+	var args = current_schedule["args"]
+	velocity_func = funcref(ShootPaterns, current_schedule["pattern"])
+	# Aumente current_schedule_index para cambiar el patron de movimiento deacuerdo el tiempo
+	if t > current_schedule["time"] and current_schedule_index + 1 < schedule.size():
+		current_schedule_index += 1
+		# Actualiza las variables
+		current_schedule = schedule[current_schedule_index]
+		args = current_schedule["args"]
+		velocity_func = funcref(ShootPaterns, current_schedule["pattern"])		
+	# dpos = v dt
+	self.position += velocity
+	# Llama a la funcion segun el numero de argumentos
+	match args.size():
+		0:
+			velocity = velocity_func.call_func()
+		1:
+			velocity = velocity_func.call_func(args[0])
+		2:
+			velocity = velocity_func.call_func(args[0], args[1])
+		3:
+			velocity = velocity_func.call_func(args[0], args[1], t)
+		4:
+			velocity = velocity_func.call_func(args[0], args[1], args[2], t)
+		5:
+			velocity = velocity_func.call_func(args[0], args[1], args[2], args[3], t)
+		6:
+			velocity = velocity_func.call_func(args[0], args[1], args[2], args[3], args[4], t)
+		_:
+			assert(false)
+	t += 0.5
 
 func _on_VisibilityNotifier2D_screen_exited():
 	self.queue_free() # Marca la bala para ser eliminada al salir de la pantalla 

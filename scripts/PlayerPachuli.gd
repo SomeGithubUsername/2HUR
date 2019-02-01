@@ -29,7 +29,9 @@ func shoot():
 #	new_bullets[2].start_at(-(GlobalScript.QUARTER_PI + GlobalScript.HALF_PI), 250, self.position)
 	var new_bullet = Bullet.instance()
 	new_bullet.set_affected_group("enemies")
-	new_bullet.start(position, -GlobalScript.HALF_PI)
+	new_bullet.position = self.position
+	new_bullet.add_to_schedule(100, "circular", [50, 0.1, frames_afther_last_bullet*GlobalScript.QUARTER_PI, null])
+	new_bullet.add_to_schedule(200, "linear_uniform", [GlobalScript.HALF_PI, 5])
 	new_bullet.set_lifetime(0)
 	ShootContainer.add_child(new_bullet)
 
