@@ -1,17 +1,20 @@
 extends "res://scripts/Shoot.gd"
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-var length = 0
-var widt = 0
-
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
+	self.add_to_group(GlobalScript.LASERS_GROUP)
+	#print("new laser")
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	pass
+	if self.angular_velocity != 0.0:
+		self.rotate(self.angular_velocity)
+
+func set_length(l):
+	var a = $Hitbox.get_shape().a #El punto de inicio de la hitbox 
+	var b = $Hitbox.get_shape().b #El pinto final
+	var l0 = a.distance_to(b)
+	self.scale.x = l/l0 
+	#El factor al que se escala la base del rectangulo (paralela al eje x) que contiene a Laser

@@ -8,8 +8,6 @@ const SPRITE_ANIMATION_LIMITS = {	"up_or_down":[0, 4],	"focused_up_or_down":[24,
 									"left":[16, 23], 		"focused_left":[40, 47]}
 const NORMAL_MOVMENT_SPEED = 700
 const FOCUSED_MOVMENT_SPEED = 50
-onready var Bullet = preload("res://scenes/Bullet.tscn")
-onready var ShootContainer = get_node("ShootContainer") # Todas las nuevas balas son agregadas como hijos a este nodo
 var frame_counter = 0
 var frames_afther_last_bullet = 0
 
@@ -20,24 +18,18 @@ func _ready():
 	pass
 
 func shoot():
-#	var new_bullets = [ Bullet.instance(), Bullet.instance(), Bullet.instance() ]
-#	ShootContainer.add_child(new_bullets[0])
-#	ShootContainer.add_child(new_bullets[1])
-#	ShootContainer.add_child(new_bullets[2])
-#	new_bullets[0].start_at(-GlobalScript.HALF_PI, 100, self.position)
-#	new_bullets[1].start_at(-GlobalScript.QUARTER_PI, 300, self.position)
-#	new_bullets[2].start_at(-(GlobalScript.QUARTER_PI + GlobalScript.HALF_PI), 250, self.position)
 	var new_bullet = Bullet.instance()
 	new_bullet.set_affected_group("enemies")
 	new_bullet.position = self.position
-	new_bullet.add_to_schedule(100, "circular", [50, 0.1, frames_afther_last_bullet*GlobalScript.QUARTER_PI, null])
-	new_bullet.add_to_schedule(200, "linear_uniform", [GlobalScript.HALF_PI, 5])
+	new_bullet.add_to_schedule(100, "circular", [50, 0.1, frames_afther_last_bullet*GlobalScript.QUARTER_PI], true)
+	new_bullet.add_to_schedule(200, "linear_uniform", [GlobalScript.HALF_PI, 5], false)
 	new_bullet.set_lifetime(0)
 	ShootContainer.add_child(new_bullet)
 
 # Called every frame. Delta is time since last frame.
 # Update game logic here.
 func _process(delta):
+	._process(delta)
 	var state = null
 	var current_speed = 0
 	# ---------------------------- Permite disparar cada 15 frames

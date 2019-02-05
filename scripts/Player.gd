@@ -1,5 +1,6 @@
 extends "res://scripts/Character.gd"
 var screen_size # Guarda los limites de movimiento del jugador
+var graze_points = 0
 var focus = false
 var power = 0
 
@@ -41,8 +42,16 @@ func _ready():
 	self.add_to_group(GlobalScript.PLAYER_GROUP)
 	screen_size = get_viewport().size
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	._process(delta) #Llamada a la funcion pocess de super
 
+func get_main_group():
+	return GlobalScript.PLAYER_GROUP
+
+func _on_GrazeArea_area_exited(area):
+	# Si el area que salio de GrazeArea es una bala
+	if area.get_groups().has(GlobalScript.BULLETS_GROUP):
+		# Si la bala daña al jugador
+		if area.afected_group == GlobalScript.PLAYER_GROUP:
+			self.graze_points += 1
+			print("Graze Points: ", self.graze_points)

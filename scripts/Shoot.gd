@@ -13,21 +13,29 @@ func set_affected_group(group_name):
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
+	self.add_to_group(GlobalScript.SHOOT_GOUP)
+	#print("new shoot")
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
 
+func set_lifetime(seconds):
+	if seconds == 0:
+		$LifeTimer.stop()
+		return 
+	$LifeTimer.wait_time = seconds
+	$LifeTimer.start()
+
 # Cuando el temporizador termine eliminar el disparo
 func _on_LifeTimer_timeout():
-	print("End life time")
+	# print("End life time")
 	self.hide()
 	$Hitbox.disabled = true
 	self.queue_free()
 
-func _on_Shoot_area_entered(area):
-	if area.get_groups().has(afected_group):
-		area.damage(self.damage)
-		# print("Hiting ", afected_group)
+#func _on_Shoot_area_entered(area):
+#	if area.get_groups().has(afected_group):
+#		area.damage(self.damage)
+#		print("Hiting ", afected_group)

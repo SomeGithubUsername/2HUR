@@ -3,15 +3,15 @@
 [ext_resource path="res://scenes/PlayerPachuli.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Dummy.tscn" type="PackedScene" id=2]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 [node name="PlayerPachuli" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 551.32, 485.44 )
-is_able_to_shoot = true
 
 [node name="Dummy" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 315.942, 260.296 )
+permanent_invencibility = false
 
 

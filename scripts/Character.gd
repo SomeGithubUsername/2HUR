@@ -3,16 +3,20 @@ extends "res://scripts/Hittable.gd"
 var healt_points = 1
 export (bool) var is_able_to_shoot = true 
 
+onready var Bullet = preload("res://scenes/Bullet.tscn")
+onready var Laser = preload("res://scenes/Laser.tscn")
+onready var ShootPaterns = preload("res://scripts/ShootPatterns.gd") 
+
+onready var ShootContainer = get_node("ShootContainer")
+# Almacena como nodos hijos a los laseres y ballas que el personaje utiliza
+
+func shoot():
+	pass
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
-
-# Se llama cuando un disparo golpea la hitbox del enemigo, damage_points es el daño del disparo
-func damage(damage_points):
-	self.healt_points -= damage_points
-	if self.healt_points <= 0:
-		self.queue_free()
+	self.add_to_group(GlobalScript.CHARACTER_GROUP)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
