@@ -18,3 +18,8 @@ func get_main_group():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+
+func _on_VisibilityNotifier_screen_exited():
+	print("Enemie @", self.get_instance_id(), " deleted")
+	self.queue_free()

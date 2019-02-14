@@ -13,13 +13,13 @@ func shoot():
 	#Verifica si existe algun nodo laser dentro de shootContainer
 	if not ShootContainer.has_node("Laser"):
 		var laser = Laser.instance()
-		laser.position = self.position
+		laser.position = self.global_position
 		laser.set_affected_group(GlobalScript.PLAYER_GROUP)
 		laser.rotate(GlobalScript.HALF_PI)
 		laser.set_length(300)
 		laser.set_lifetime(3)
 		ShootContainer.add_child(laser)
-	new_bullet.position = self.position
+	new_bullet.position = self.global_position
 	new_bullet.set_lifetime(0)
 	new_bullet.set_affected_group(GlobalScript.PLAYER_GROUP)
 	#new_bullet.add_to_schedule(10.0, "linear_uniform", [GlobalScript.QUARTER_PI, 8.0])

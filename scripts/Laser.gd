@@ -11,6 +11,8 @@ func _process(delta):
 	# Update game logic here.
 	if self.angular_velocity != 0.0:
 		self.rotate(self.angular_velocity)
+	self.position = get_node("../../").global_position
+	# Hace que el laser se mueva junto a su dueño
 
 func set_length(l):
 	var a = $Hitbox.get_shape().a #El punto de inicio de la hitbox 
