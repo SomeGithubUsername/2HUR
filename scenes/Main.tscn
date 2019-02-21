@@ -12,13 +12,5 @@ position = Vector2( 551.32, 485.44 )
 [node name="Dummy" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 315.942, 260.296 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-is_able_to_shoot = true
 
 
