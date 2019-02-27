@@ -24,6 +24,8 @@ func load_waves():
 	var i = 1
 	for w in _waves:
 		w.add_to_enemy_schedule(3, 0, 10, Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
+		w.add_to_enemy_schedule(3, 1, 10, Tween.TRANS_SINE, Tween.EASE_IN, 0)
+		w.add_to_enemy_schedule(6, 0, 5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0)
 		i += 1
 
 func current_wave_ended():

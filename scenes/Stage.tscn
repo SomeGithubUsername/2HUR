@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Stage.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Wave.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Dummy.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -15,14 +14,35 @@ _data = {
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 840.332, 277.075, 0, 0, 0, 0, 570.331, 279.075, 0, 0, 0, 0, 290.331, 269.075, 0, 0, 0, 0, 114.33, 257.075, 0, 0, 0, 0, -79.6704, 181.075 )
+"points": PoolVector2Array( 0, 0, 0, 0, 36.5652, -101.939, 0, 0, 0, 0, -822.162, 494.184 )
 }
 
 [sub_resource type="Curve2D" id=3]
 
 bake_interval = 5.0
 _data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 840.332, 277.075, 0, 0, 0, 0, 570.331, 279.075, 0, 0, 0, 0, 290.331, 269.075, 0, 0, 0, 0, 114.33, 257.075, 0, 0, 0, 0, -113.483, 164.951 )
+}
+
+[sub_resource type="Curve2D" id=4]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, -134.072, 111.912, 44.4715, -29.7356, 0, 0, 0, 0, -107.479, 342.383, 0, 0, 0, 0, -107.479, 342.383, -89.7509, -137.396, 0, 0, -3.3241, 699.17 )
+}
+
+[sub_resource type="Curve2D" id=5]
+
+bake_interval = 5.0
+_data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 757.332, -63.9257, 0, 0, 0, 0, 578.331, 218.075, 0, 0, 0, 0, 488.331, 347.075, 0, 0, 0, 0, 317.331, 450.076, 0, 0, 0, 0, 113.33, 503.076, 0, 0, 0, 0, -178.671, 537.076 )
+}
+
+[sub_resource type="Curve2D" id=6]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -143.288, 268.074, 0, 0, 0, 0, -292.521, 370.084, 0, 0, 0, 0, -377.84, 407.757, 0, 0, 0, 0, -484.212, 437.674, 0, 0, 0, 0, -617.176, 539.613, 0, 0, 0, 0, -690.306, 612.744, 0, 0, 0, 0, -782.273, 669.254, 0, 0, 0, 0, -913.261, 738.764 )
 }
 
 [node name="Stage" type="Node" index="0"]
@@ -33,6 +53,8 @@ script = ExtResource( 1 )
 
 [node name="Wave" parent="Waves" index="0" instance=ExtResource( 2 )]
 
+editor/display_folded = true
+
 [node name="Paths" parent="Waves/Wave" index="0"]
 
 editor/display_folded = true
@@ -40,12 +62,19 @@ editor/display_folded = true
 [node name="Path2D" type="Path2D" parent="Waves/Wave/Paths" index="0"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( -27.6702, -31.9997 )
+position = Vector2( -52.9153, -51.6522 )
+scale = Vector2( 1.03576, 1.02928 )
 curve = SubResource( 1 )
 
-[node name="Dummy" parent="Waves/Wave" index="2" instance=ExtResource( 3 )]
+[node name="Path2D2" type="Path2D" parent="Waves/Wave/Paths" index="1"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 755.523, 123.09 )
+curve = SubResource( 2 )
 
 [node name="Wave2" parent="Waves" index="1" instance=ExtResource( 2 )]
+
+editor/display_folded = true
 
 [node name="Paths" parent="Waves/Wave2" index="0"]
 
@@ -54,13 +83,17 @@ editor/display_folded = true
 [node name="Path2D" type="Path2D" parent="Waves/Wave2/Paths" index="0"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
-[node name="Dummy" parent="Waves/Wave2" index="2" instance=ExtResource( 3 )]
+[node name="Path2D2" type="Path2D" parent="Waves/Wave2/Paths" index="1"]
 
-position = Vector2( 653.5, 44.3762 )
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 382.115, -12.0908 )
+curve = SubResource( 4 )
 
 [node name="Wave3" parent="Waves" index="2" instance=ExtResource( 2 )]
+
+editor/display_folded = true
 
 [node name="Paths" parent="Waves/Wave3" index="0"]
 
@@ -71,11 +104,13 @@ editor/display_folded = true
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 58.2563, 0.638199 )
 scale = Vector2( 0.923077, 1.00998 )
-curve = SubResource( 3 )
+curve = SubResource( 5 )
 
-[node name="Dummy" parent="Waves/Wave3" index="2" instance=ExtResource( 3 )]
+[node name="Path2D2" type="Path2D" parent="Waves/Wave3/Paths" index="1"]
 
-position = Vector2( 417.488, 457.673 )
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 841.95, -311.26 )
+curve = SubResource( 6 )
 
 
 [editable path="Waves/Wave"]
