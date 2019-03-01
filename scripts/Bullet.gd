@@ -52,7 +52,7 @@ func _process(delta):
 	velocity = ShootPaterns.callv(current_schedule["pattern"], args)
 	# Llama a una funcion de ShootPaterns cuyo nombre esta almacenado en current_schedule["pattern"], envia los argumentos como un arreglo
 	assert(velocity != null)
-	self.position += self.velocity
+	self.position += self.velocity * delta
 	t += 1
 
 func _on_VisibilityNotifier2D_screen_exited():

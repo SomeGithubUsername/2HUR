@@ -18,18 +18,14 @@ func _ready():
 	pass
 
 func shoot():
-	var new_bullet = Bullet.instance()
-	new_bullet.set_affected_group("enemies")
-	new_bullet.position = self.position
-	new_bullet.add_to_schedule(100, "circular", [50, 0.1, frames_afther_last_bullet*GlobalScript.QUARTER_PI], true)
-	new_bullet.add_to_schedule(200, "linear_uniform", [GlobalScript.HALF_PI, 5], false)
-	new_bullet.set_lifetime(0)
+	var new_bullet = DeffaultShoots.bullet_a(self.global_position, GlobalScript.ENEMIES_GROUP, -GlobalScript.HALF_PI, 300)
+	ShootContainer.add_child(new_bullet)
+	new_bullet = DeffaultShoots.bullet_b(self.global_position, GlobalScript.ENEMIES_GROUP, -GlobalScript.HALF_PI, 300, -3)
 	ShootContainer.add_child(new_bullet)
 
 # Called every frame. Delta is time since last frame.
 # Update game logic here.
 func _process(delta):
-	._process(delta)
 	var state = null
 	var current_speed = 0
 	# ---------------------------- Permite disparar cada 15 frames

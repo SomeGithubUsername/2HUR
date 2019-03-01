@@ -39,6 +39,7 @@ func damage(damage_points):
 	print("The player was hitted")
 
 func _ready():
+	._ready()
 	self.add_to_group(GlobalScript.PLAYER_GROUP)
 	screen_size = get_viewport().size
 
