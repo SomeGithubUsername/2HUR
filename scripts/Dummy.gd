@@ -23,7 +23,7 @@ func shoot():
 	new_bullet.set_lifetime(0)
 	new_bullet.set_affected_group(GlobalScript.PLAYER_GROUP)
 	#new_bullet.add_to_schedule(10.0, "linear_uniform", [GlobalScript.QUARTER_PI, 8.0])
-	new_bullet.add_to_schedule(0, "linear_uniform", [GlobalScript.HALF_PI, 10], false)
+	new_bullet.add_to_schedule(0, "linear_uniform", [GlobalScript.HALF_PI, 300], false)
 	ShootContainer.add_child(new_bullet)
 
 func _process(delta):

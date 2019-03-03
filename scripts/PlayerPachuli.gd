@@ -6,8 +6,7 @@ extends "res://scripts/Player.gd"
 const SPRITE_ANIMATION_LIMITS = {	"up_or_down":[0, 4],	"focused_up_or_down":[24, 28],
 									"right":[8, 15],		"focused_right":[32, 39],
 									"left":[16, 23], 		"focused_left":[40, 47]}
-const NORMAL_MOVMENT_SPEED = 700
-const FOCUSED_MOVMENT_SPEED = 50
+
 var frame_counter = 0
 var frames_afther_last_bullet = 0
 
@@ -15,7 +14,9 @@ var frames_afther_last_bullet = 0
 # Initialization here
 func _ready():
 	# _ready() de player.gd se llama automaticamente
-	pass
+	focused_speed = 100
+	normal_speed = 500
+	current_speed = normal_speed
 
 func shoot():
 	var new_bullet = DeffaultShoots.bullet_a(self.global_position, GlobalScript.ENEMIES_GROUP, -GlobalScript.HALF_PI, 300)
@@ -27,7 +28,6 @@ func shoot():
 # Update game logic here.
 func _process(delta):
 	var state = null
-	var current_speed = 0
 	# ---------------------------- Permite disparar cada 15 frames
 	if frames_afther_last_bullet >= 15 and Input.is_action_pressed("player_shoot"):
 		shoot()
@@ -45,7 +45,7 @@ func _process(delta):
 	# ---------------------------- Cambia la velocidad de movimiento y los limites de la animacion si el jugador cambia de modo
 	if is_focused():
 		$Hitbox/HitboxSprite.show()
-		current_speed = FOCUSED_MOVMENT_SPEED
+		#current_speed = FOCUSED_MOVMENT_SPEED
 		if Input.is_action_pressed("ui_right"):
 			state = "focused_right"
 		elif Input.is_action_pressed("ui_left"):
@@ -54,14 +54,14 @@ func _process(delta):
 			state = "focused_up_or_down"
 	else:
 		$Hitbox/HitboxSprite.hide()
-		current_speed = NORMAL_MOVMENT_SPEED
+		#current_speed = NORMAL_MOVMENT_SPEED
 		if Input.is_action_pressed("ui_right"):
 			state = "right"
 		elif Input.is_action_pressed("ui_left"):
 			state = "left"
 		else:
 			state = "up_or_down"
-	update_position(current_speed, delta)
+	#update_position(current_speed, delta)
 	intial_sprite_frame = SPRITE_ANIMATION_LIMITS[state][0]
 	final_sprite_frame = SPRITE_ANIMATION_LIMITS[state][1]
 	# ------------------------------- Mantiene el frame de la animacion por 7 frames
