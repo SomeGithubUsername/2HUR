@@ -1,11 +1,12 @@
 extends "res://scripts/Character.gd"
 var screen_size # Guarda los limites de movimiento del jugador
 var graze_points = 0
-var focus = false
+var focus = false setget , is_focused
 var power = 0
 var current_speed = 0
 var focused_speed = 200
 var normal_speed = 400
+var _Spell = null
 
 func _input(event):
 	"""Lleva a cabo los eventos de entrada: Cambio de modo, movimiento y spells"""
@@ -20,6 +21,12 @@ func _input(event):
 			self.current_speed = focused_speed
 		else:
 			self.current_speed = normal_speed
+		
+		if Input.is_action_just_pressed("player_use_bomb"):
+			_spell()
+
+func _spell():
+	pass
 
 # Actualiza la posicion del jugador
 func update_position(delta):
@@ -47,6 +54,11 @@ func is_focused():
 func damage(damage_points):
 	"""Heredada, lleva a cabo el control del daño"""
 	print("The player was hitted")
+
+func _init():
+	var SM = load("res://scripts/SpellcardManager.gd")
+	self._Spell = SM.new(self, GlobalScript.ENEMIES_GROUP, $ShootContainer)
+	self.add_child(_Spell)
 
 func _ready():
 	._ready()
