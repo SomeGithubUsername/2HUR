@@ -33,7 +33,7 @@ func _input(event):
 		var use_item = _ItemContainer.get_child_count() > 0 and Input.is_action_just_pressed("player_use_item_1")
 		if use_item:
 			var item = _ItemContainer.get_child(0)
-			use_item(item.item_type)
+			_use_item(item.item_type)
 
 func get_lifes():
 	return lifes
@@ -82,6 +82,7 @@ func _ready():
 	._ready()
 	self.add_to_group(GlobalScript.PLAYER_GROUP)
 	self._ItemContainer = $ItemContainer
+	self._ItemContainer.carrier = self
 	screen_size = get_viewport().size
 	focused_speed = 100
 	normal_speed = 400
@@ -97,45 +98,11 @@ func get_main_group():
 func add_item(item):
 	"""Agrega un item a la lista de items del jugador"""
 	if item.is_in_group(GlobalScript.ITEMS_GROUP):
-		print("Adding item: ", item.item_type)
-		if item.auto_use:
-			# Si el objeto es de uso inmediato, se usa y se elmimina
-			item.use(self)
-			item.queue_free()
-		else:
-			# Si no, se agrega a la bolsa
-			var item_type = item.item_type
-			if item_type in self._bag.keys():
-				# Si el jugador tiene un objeto del mismo tipo
-				self._bag[item_type] += 1
-				# Aumentar el contador del objeto
-			else:
-				self._bag[item_type] = 1
-				self._ItemContainer.add_child(item)
-		print("Bag: ", self._bag)
+		_ItemContainer.add_item(item)
 
-func use_item(item_type):
+func _use_item(item_type):
 	"""Utiliza el item del tipo especificado"""
-	if item_type in self._bag.keys():
-		self._bag[item_type] -= 1
-		assert(self._bag[item_type] >= 0)
-		var item = null
-		for it in self._ItemContainer.get_children():
-			#Busca el item que tenga el mismo tipo que el especificado
-			if item_type == it.item_type:
-				item = it
-				break
-		assert(item != null)
-		item.use(self)
-		# Aplica el efecto del objeto sobre el jugador
-		if self._bag[item_type] < 1:
-			# Si es el ultimo item
-			self._bag.erase(item_type)
-			self._ItemContainer.remove_child(item)
-			item.queue_free()
-			# Eliminar el item
-		else:
-			self._bag[item_type] -= 1
+	_ItemContainer.use_item(item_type)
 
 func _on_GrazeArea_area_exited(area):
 	# Si el area que salio de GrazeArea es una bala
