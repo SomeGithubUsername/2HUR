@@ -16,12 +16,16 @@ func _ready():
 		x += 20
 """
 func _ready():
+	var Score = load("res://scripts/ScorePoint.gd")
 	var Life = load("res://scripts/Life.gd")
-	var Frag = load("res://scripts/Frag.gd")
-	var frag = Frag.new()
-	var life = Life.new()
-	life._body.position.x = 300
-	frag._body.position.x = 200
-	frag._body.speed = 80
-	add_child(life._body)
-	add_child(frag._body)
+	var Bomb = load("res://scripts/Bomb.gd")
+	var Power = load("res://scripts/Power.gd")
+	var item = null
+	var inc = 10
+	for It in [Score, Life, Bomb, Power]:
+		item = It.new()
+		item._body.position.x = 120 + 2*inc
+		item._body.position.y = 10
+		item._body.speed = 60 - inc
+		inc += 4
+		self.add_child(item._body)

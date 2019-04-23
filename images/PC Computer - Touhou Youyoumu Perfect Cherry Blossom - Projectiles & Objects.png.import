@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes.png-d0058bf244567e1ffff633556825bb1f.stex"
+path="res://.import/PC Computer - Touhou Youyoumu Perfect Cherry Blossom - Projectiles & Objects.png-d5bfb7e773c7e99238fbf8f45f6b0376.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/eyes.png"
-dest_files=[ "res://.import/eyes.png-d0058bf244567e1ffff633556825bb1f.stex" ]
+source_file="res://images/PC Computer - Touhou Youyoumu Perfect Cherry Blossom - Projectiles & Objects.png"
+dest_files=[ "res://.import/PC Computer - Touhou Youyoumu Perfect Cherry Blossom - Projectiles & Objects.png-d5bfb7e773c7e99238fbf8f45f6b0376.stex" ]
 
 [params]
 

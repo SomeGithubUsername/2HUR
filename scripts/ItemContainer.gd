@@ -56,4 +56,4 @@ func get_item_count():
 	return self.get_child_count()
 
 func is_empty():
-	return self._bag.empty()
+	return self.get_child_count() < 1

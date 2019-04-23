@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes.png-d0058bf244567e1ffff633556825bb1f.stex"
+path="res://.import/PC Computer - Touhou Fuujinroku Mountain of Faith - Objects and Projectiles.png-7b4e8900dbb8f49b279f7a66fe889aa0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/eyes.png"
-dest_files=[ "res://.import/eyes.png-d0058bf244567e1ffff633556825bb1f.stex" ]
+source_file="res://images/PC Computer - Touhou Fuujinroku Mountain of Faith - Objects and Projectiles.png"
+dest_files=[ "res://.import/PC Computer - Touhou Fuujinroku Mountain of Faith - Objects and Projectiles.png-7b4e8900dbb8f49b279f7a66fe889aa0.stex" ]
 
 [params]
 
