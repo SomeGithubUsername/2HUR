@@ -1,202 +1,124 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/StageTest.gd" type="Script" id=1]
-[ext_resource path="res://scenes/PlayerPachuli.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/PlayerPachuli.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Curve2D" id=1]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -68, 150, 0, 0, 0, 0, 132, 160, 0, 0, 0, 0, 332, 128, 0, 0, 0, 0, 488, 102, 0, 0, 0, 0, 636, 90, 0, 0, 0, 0, 776, 106, 0, 0, 0, 0, 818, 154 )
 }
 
 [sub_resource type="Curve2D" id=2]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -124, 36, 0, 0, 0, 0, -32, 26, 0, 0, 0, 0, -32, 26, 0, 0, 0, 0, 280, 214, 0, 0, 0, 0, 306, 352, 0, 0, 0, 0, 186, 424, 0, 0, 0, 0, -240.513, 854.503 )
 }
 
 [sub_resource type="Curve2D" id=3]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 324.353, -83.3969, 0, 0, 0, 0, 570, 72, 0, 0, 0, 0, 686, 218, 0, 0, 0, 0, 686, 440, 0, 0, 0, 0, 560, 526, 0, 0, 0, 0, 382, 480, 0, 0, 0, 0, 332, 348, 0, 0, 0, 0, 466, 244, 0, 0, 0, 0, 629.487, 243.465, 0, 0, 0, 0, 883.487, 429.465 )
 }
 
 [sub_resource type="Curve2D" id=4]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 772, 32, 0, 0, 0, 0, 616, 110, 0, 0, 0, 0, 500, 180, 0, 0, 0, 0, 392, 324, 0, 0, 0, 0, 454, 452, 0, 0, 0, 0, 454, 452, 0, 0, 0, 0, 350, 498, 0, 0, 0, 0, 246, 446, 0, 0, 0, 0, 212, 320, 0, 0, 0, 0, 102, 260, 0, 0, 0, 0, -64, 212 )
 }
 
 [sub_resource type="Curve2D" id=5]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 172, -66, 0, 0, 0, 0, 306, 104, 0, 0, 0, 0, 414, 206, 0, 0, 0, 0, 508, 232, 0, 0, 0, 0, 647.487, 318.569, 0, 0, 0, 0, 675.487, 522.569, 0, 0, 0, 0, 373.487, 566.569, 0, 0, 0, 0, 130, 402, 0, 0, 0, 0, 104, 282, 0, 0, 0, 0, 180, 172, 0, 0, 0, 0, 318, 186, 0, 0, 0, 0, 434, 286, 0, 0, 0, 0, 499.487, 410.569, 0, 0, 0, 0, 587.487, 723.465 )
 }
 
 [sub_resource type="Curve2D" id=6]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 683.487, -79.4311, 0, 0, 0, 0, 389.487, 80.5689, 0, 0, 0, 0, 115.487, 118.569, 0, 0, 0, 0, 31.4872, 198.569, 0, 0, 0, 0, 51.4872, 444.569, 0, 0, 0, 0, 111.487, 514.569, 0, 0, 0, 0, 207.487, 492.569, 0, 0, 0, 0, 289.487, 362.569, 0, 0, 0, 0, 359.487, 228.569, 0, 0, 0, 0, 519.487, 212.569, 0, 0, 0, 0, 593.487, 328.569, 0, 0, 0, 0, 383.487, 528.569, 0, 0, 0, 0, 175.487, 757.465 )
 }
 
 [sub_resource type="Curve2D" id=7]
-
-bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -102.513, -29.4311, 0, 0, 0, 0, 661.487, 126.569, 0, 0, 0, 0, 61.4872, 333.465, 0, 0, 0, 0, 657.487, 354.569, 0, 0, 0, 0, 49.4872, 533.465, 0, 0, 0, 0, 667.487, 683.465 )
 }
 
 [node name="Stage" type="Node"]
-
 script = ExtResource( 1 )
 
-[node name="Paths" type="Node" parent="." index="0"]
-
+[node name="Paths" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Path0" type="Path2D" parent="Paths" index="0"]
-
+[node name="Path0" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 1 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path0" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path0"]
 position = Vector2( -68, 150 )
 rotation = 0.0499598
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path1" type="Path2D" parent="Paths" index="1"]
-
+[node name="Path1" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 2 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path1" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path1"]
 position = Vector2( -124, 36 )
 rotation = -0.10827
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path2" type="Path2D" parent="Paths" index="2"]
-
+[node name="Path2" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 3 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path2" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path2"]
 position = Vector2( 324.353, -83.3969 )
 rotation = 0.564053
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path3" type="Path2D" parent="Paths" index="3"]
-
+[node name="Path3" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 4 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path3" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path3"]
 position = Vector2( 772, 32 )
 rotation = 2.67796
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path4" type="Path2D" parent="Paths" index="4"]
-
+[node name="Path4" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 5 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path4" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path4"]
 position = Vector2( 172, -66 )
 rotation = 0.903272
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path5" type="Path2D" parent="Paths" index="5"]
-
+[node name="Path5" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 6 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path5" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path5"]
 position = Vector2( 683.487, -79.4311 )
 rotation = 2.6432
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Path6" type="Path2D" parent="Paths" index="6"]
-
+[node name="Path6" type="Path2D" parent="Paths"]
 editor/display_folded = true
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 7 )
 
-[node name="PathFollow" type="PathFollow2D" parent="Paths/Path6" index="0"]
-
+[node name="PathFollow" type="PathFollow2D" parent="Paths/Path6"]
 position = Vector2( -102.513, -29.4311 )
 rotation = 0.201418
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
 rotate = false
-cubic_interp = true
 loop = false
-lookahead = 4.0
 
-[node name="Timer" type="Timer" parent="." index="1"]
+[node name="Timer" type="Timer" parent="."]
 
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="PlayerPachuli" parent="." index="2" instance=ExtResource( 2 )]
-
+[node name="PlayerPachuli" parent="." instance=ExtResource( 2 )]
 position = Vector2( 461, 565.25 )
+permanent_invencibility = false
+is_able_to_shoot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-

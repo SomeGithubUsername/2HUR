@@ -1,6 +1,6 @@
 extends Node
 
-onready var Dummy = preload("res://scenes/Dummy.tscn")
+onready var Dummy = preload("res://scenes/enemies/Dummy.tscn")
 # Se usa para spawnear enemigos
 
 # Called when the node is added to the scene for the first time.

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/player/Player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/items/ItemContainer.gd" type="Script" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+
+[node name="ItemContainer" type="Node" parent="." index="2"]
+script = ExtResource( 3 )
+
+[node name="GrazeArea" type="Area2D" parent="." index="4"]
+
+[node name="GrazeAreaHitbox" type="CollisionShape2D" parent="GrazeArea" index="0"]
+
+[node name="ItemRecolecion" type="Area2D" parent="." index="5"]
+
+[node name="ItemRecolectionAreaHitbox" type="CollisionShape2D" parent="ItemRecolecion" index="0"]
+
+[connection signal="area_exited" from="GrazeArea" to="." method="_on_GrazeArea_area_exited"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/shots/Laser.gd" type="Script" id=1]
+[ext_resource path="res://images/shots/laser.png" type="Texture" id=2]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( -30, 0 )
+b = Vector2( 30, 0 )
+
+[node name="Laser" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 30, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Hitbox"]
+show_behind_parent = true
+scale = Vector2( 0.14, 0.14 )
+texture = ExtResource( 2 )
+vframes = 11
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_LifeTimer_timeout"]
